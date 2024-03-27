@@ -1,10 +1,26 @@
 #include<unistd.h>
 
-// getchar: unbuffered single character input
-main()
+
+#define EOF -1
+
+// getchar: unbuffered single character version
+int getchar(void)
 {
     char c;
-    while(read(0, &c, 1) > 0)
-        write(1, &c, 1);
 
+    return (read(0, &c, 1) == 1) ? (unsigned char) c : EOF;
+}
+
+void putchar1(char c)
+{
+    write(1, &c, 1);
+
+}
+
+
+main()
+{
+    int c;
+    while((c = getchar())!= EOF)
+        putchar1(c);
 }
