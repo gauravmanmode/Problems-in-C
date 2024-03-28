@@ -13,7 +13,7 @@ int get(int fd, long pos, char *buf, int n)
 main()
 {
     int fd;
-    char buf[100];
+    char buf[100]; 
     fd = open("a", O_RDONLY, 0);
     int n = get(fd, 5, buf, 7);
     write(1, buf, n);

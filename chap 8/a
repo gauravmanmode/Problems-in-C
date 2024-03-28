@@ -1,1 +1,7 @@
 hello world!
+#include<stdio.h>
+main()
+{
+    int x = _getchar();
+    putchar(x);
+}
