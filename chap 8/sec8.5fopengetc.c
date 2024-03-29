@@ -54,7 +54,7 @@ FILE *fopen(char *name, char *mode)
     if (*mode != 'r' && *mode != 'w' && *mode != 'a')
         return NULL;
     for (fp = _iob; fp < _iob + OPEN_MAX; fp++ )
-        if (fp->flag & (_READ | _WRITE) == 0)
+        if ((fp->flag & (_READ | _WRITE)) == 0)
             break;                  // found free slot
     if (fp >= _iob + OPEN_MAX)              // no free slots
         return NULL;
@@ -112,4 +112,5 @@ main()
 {
     int x = _getchar();
     printf("%c", x);
+    
 }

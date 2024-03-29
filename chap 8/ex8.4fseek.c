@@ -156,21 +156,20 @@ FILE _iob[OPEN_MAX] = {     // stdin, stdout, stderr
     {0, (char *) 0, (char *) 0, _WRITE | _UNBUF, 2}
 };
 
-
+int fseek(FILE *fp, long offset, int origin)
+{
+    if (lseek(fp->fd, offset, origin) == -1)
+        return -1;
+    //_fillbuf(fp);    
+}
 
 main()
 {
-    FILE *fp1;
-    if ((fp1 = fopen("a", "r")) == NULL)
-        printf("error opening file");
-        int i = 0;
-        int x = getc(fp1);
-            putc(x,stdout);
-        // while (i++ < 3){
-            
-        //     _putchar('x');
+    FILE *fp1 = fopen("a", "r");
+    fseek(fp1, 6, 0);
 
-        // }
-
-    fclose(stdout);                 // need to close otherwise will not flush buffer
+    int x = getc(fp1);
+    _putchar(x);
+    fclose(stdout);
+    
 }
